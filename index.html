@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RAYAN GAMING</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#0b0b0b;
+color:white;
+overflow-x:hidden;
+}
+
+/* LOADER */
+
+#loader{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:99999;
+animation:hideLoader 1s forwards;
+animation-delay:2s;
+}
+
+@keyframes hideLoader{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+.loader-box{
+text-align:center;
+}
+
+.loader-circle{
+width:100px;
+height:100px;
+border-radius:50%;
+border:8px solid #222;
+border-top:8px solid #00ff88;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+.loader-box h1{
+margin-top:20px;
+font-size:45px;
+color:#00ff88;
+}
+
+.loader-box p{
+margin-top:10px;
+color:#aaa;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:#111;
+border-bottom:2px solid #00ff88;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo-box{
+width:60px;
+height:60px;
+border-radius:18px;
+background:linear-gradient(45deg,#00ff88,#fff);
+display:flex;
+justify-content:center;
+align-items:center;
+color:black;
+font-size:30px;
+font-weight:bold;
+box-shadow:0 0 25px rgba(0,255,136,0.4);
+}
+
+.logo h1{
+font-size:32px;
+color:#00ff88;
+}
+
+nav{
+display:flex;
+gap:20px;
+}
+
+nav a{
+text-decoration:none;
+color:#ccc;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#00ff88;
+}
+
+/* HERO */
+
+.hero{
+height:85vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+
+background:
+linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),
+url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600');
+
+background-size:cover;
+background-position:center;
+}
+
+.hero h1{
+font-size:75px;
+margin-bottom:20px;
+color:#00ff88;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+
+from{
+text-shadow:0 0 10px #00ff88;
+}
+
+to{
+text-shadow:
+0 0 20px #00ff88,
+0 0 40px #00ff88;
+}
+
+}
+
+.hero p{
+font-size:22px;
+color:#ddd;
+margin-bottom:30px;
+}
+
+.hero button{
+padding:18px 40px;
+border:none;
+border-radius:18px;
+background:#00ff88;
+color:black;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero button:hover{
+transform:scale(1.05);
+}
+
+/* GAMES */
+
+.games{
+padding:80px 40px;
+}
+
+.section-title{
+text-align:center;
+font-size:45px;
+margin-bottom:50px;
+color:#00ff88;
+}
+
+.games-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.game-card{
+background:#161616;
+border-radius:25px;
+overflow:hidden;
+border:1px solid #333;
+transition:0.3s;
+position:relative;
+}
+
+.game-card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:
+0 0 30px rgba(0,255,136,0.2),
+0 0 60px rgba(0,255,136,0.1);
+}
+
+.game-card::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.08),
+transparent
+);
+
+transform:translateX(-100%);
+transition:1s;
+}
+
+.game-card:hover::before{
+transform:translateX(100%);
+}
+
+.game-image{
+height:220px;
+background-size:cover;
+background-position:center;
+position:relative;
+}
+
+.online{
+position:absolute;
+top:15px;
+left:15px;
+background:#00ff88;
+color:black;
+padding:8px 15px;
+border-radius:20px;
+font-size:14px;
+font-weight:bold;
+}
+
+.game-info{
+padding:25px;
+}
+
+.game-info h2{
+margin-bottom:15px;
+}
+
+.game-info p{
+color:#aaa;
+margin-bottom:20px;
+line-height:1.7;
+}
+
+.play-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:15px;
+background:#00ff88;
+color:black;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.play-btn:hover{
+background:white;
+}
+
+/* TOP BUTTON */
+
+#topBtn{
+position:fixed;
+bottom:25px;
+left:25px;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#00ff88;
+color:black;
+font-size:28px;
+cursor:pointer;
+display:none;
+z-index:999;
+font-weight:bold;
+box-shadow:0 0 20px rgba(0,255,136,0.4);
+transition:0.3s;
+}
+
+#topBtn:hover{
+transform:scale(1.1);
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:35px;
+background:#111;
+color:#888;
+margin-top:40px;
+border-top:1px solid #222;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+background:#00ff88;
+border-radius:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:20px;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero h1{
+font-size:45px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:60px 40px;
+}
+
+.stat-box{
+background:#161616;
+padding:30px;
+border-radius:20px;
+text-align:center;
+border:1px solid #222;
+transition:.3s;
+}
+
+.stat-box:hover{
+transform:translateY(-8px);
+box-shadow:0 0 25px rgba(0,255,136,.25);
+}
+
+.stat-box h2{
+font-size:40px;
+color:#00ff88;
+margin-bottom:10px;
+}
+
+.new-badge{
+position:absolute;
+top:15px;
+right:15px;
+background:red;
+padding:8px 14px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+animation:pulseNew 1s infinite;
+}
+
+@keyframes pulseNew{
+50%{
+transform:scale(1.1);
+}
+}
+
+.features{
+padding:80px 40px;
+}
+
+.features-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.feature-card{
+background:#161616;
+border:1px solid #222;
+border-radius:25px;
+padding:30px;
+text-align:center;
+transition:.3s;
+}
+
+.feature-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(0,255,136,.2);
+}
+
+.feature-card h2{
+margin:15px 0;
+color:#00ff88;
+}
+
+.feature-card p{
+color:#aaa;
+line-height:1.7;
+font-size:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+
+<div id="loader">
+
+<div class="loader-box">
+
+<div class="loader-circle"></div>
+
+<h1>RAYAN GAMING</h1>
+
+<p>
+جارِ تحميل الألعاب...
+</p>
+
+</div>
+
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+
+<div class="logo-box">
+Z
+</div>
+
+<div>
+
+<h1>RAYAN GAMING</h1>
+
+<p>
+ألعاب مجانية خفيفة 🎮
+</p>
+
+</div>
+
+</div>
+
+<nav>
+
+<a href="#">الرئيسية</a>
+<a href="#">الألعاب</a>
+<a href="#">أونلاين</a>
+<a href="#">تواصل</a>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div>
+
+<h1>
+العب الآن بدون تحميل
+</h1>
+
+<p>
+أفضل الألعاب الخفيفة والأونلاين 🚀
+</p>
+
+<button onclick="scrollGames()">
+ابدأ اللعب
+</button>
+
+</div>
+
+</section>
+
+<!-- GAMES -->
+
+<section class="games" id="games">
+
+<h1 class="section-title">
+الألعاب المشهورة
+</h1>
+
+<div class="games-grid">
+
+<!-- GAME -->
+
+<div class="game-card">
+
+<div class="game-image"
+style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200')">
+
+<div class="online">
+ONLINE
+</div>
+
+</div>
+
+<div class="game-info">
+
+<h2>Subway Surfers</h2>
+
+<p>
+اجري واهرب واجمع العملات 🔥
+</p>
+
+<button class="play-btn"
+onclick="playSound(); window.open('https://poki.com/en/g/subway-surfers','_blank')">
+
+العب الآن
+
+</button>
+
+</div>
+
+</div>
+
+<!-- GAME -->
+
+<div class="game-card">
+
+<div class="game-image"
+style="background-image:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200')">
+
+<div class="online">
+ONLINE
+</div>
+
+</div>
+
+<div class="game-info">
+
+<h2>Temple Run</h2>
+
+<p>
+اهرب بأقصى سرعة 😎
+</p>
+
+<button class="play-btn"
+onclick="playSound(); window.open('https://poki.com/en/g/temple-run-2','_blank')">
+
+العب الآن
+
+</button>
+
+</div>
+
+</div>
+
+<!-- GAME -->
+
+<div class="game-card">
+
+<div class="game-image"
+style="background-image:url('https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=1200')">
+
+<div class="online">
+ONLINE
+</div>
+
+</div>
+
+<div class="game-info">
+
+<h2>Moto X3M</h2>
+
+<p>
+سباقات موتوسيكلات خطيرة 🔥
+</p>
+
+<button class="play-btn"
+onclick="playSound(); window.open('https://poki.com/en/g/moto-x3m','_blank')">
+
+العب الآن
+
+</button>
+
+</div>
+
+</div>
+
+<!-- GAME -->
+
+<div class="game-card">
+
+<div class="game-image"
+style="background-image:url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200')">
+
+<div class="online">
+ONLINE
+</div>
+
+</div>
+
+<div class="game-info">
+
+<h2>Stickman Hook</h2>
+
+<p>
+اقفز وتحرك بالحبال 🚀
+</p>
+
+<button class="play-btn"
+onclick="playSound(); window.open('https://poki.com/en/g/stickman-hook','_blank')">
+
+العب الآن
+
+</button>
+
+</div>
+
+</div>
+
+<!-- GAME -->
+
+<div class="game-card">
+
+<div class="game-image"
+style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200')">
+
+<div class="online">
+ONLINE
+</div>
+
+</div>
+
+<div class="game-info">
+
+<h2>Snake</h2>
+
+<p>
+لعبة الثعبان الكلاسيكية 🐍
+</p>
+
+<button class="play-btn"
+onclick="playSound(); window.open('https://playsnake.org/','_blank')">
+
+العب الآن
+
+</button>
+
+</div>
+
+</div>
+
+<!-- GAME -->
+
+<div class="game-card">
+
+<div class="game-image"
+style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200')">
+
+<div class="online">
+ONLINE
+</div>
+
+</div>
+
+<div class="game-info">
+
+<h2>Tic Tac Toe</h2>
+
+<p>
+لعبة XO الشهيرة 🎯
+</p>
+
+<button class="play-btn"
+onclick="playSound(); window.open('https://playtictactoe.org/','_blank')">
+
+العب الآن
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat-box">
+<h2 id="gamesCount">6</h2>
+<p>لعبة</p>
+</div>
+
+<div class="stat-box">
+<h2 id="onlineCount">120000</h2>
+<p>لاعب متصل</p>
+</div>
+
+<div class="stat-box">
+<h2>99%</h2>
+<p>رضا اللاعبين</p>
+</div>
+
+<div class="stat-box">
+<h2>24/7</h2>
+<p>متاح دائماً</p>
+</div>
+
+</section>
+
+<section class="features">
+
+<h1 class="section-title">
+لماذا RAYAN GAMING ؟
+</h1>
+
+<div class="features-grid">
+
+<div class="feature-card">
+🎮
+<h2>ألعاب مجانية</h2>
+<p>العب بدون دفع أي رسوم.</p>
+</div>
+
+<div class="feature-card">
+⚡
+<h2>سرعة عالية</h2>
+<p>تحميل سريع وتجربة سلسة.</p>
+</div>
+
+<div class="feature-card">
+🌍
+<h2>أونلاين</h2>
+<p>العب مباشرة من المتصفح.</p>
+</div>
+
+<div class="feature-card">
+🔒
+<h2>آمن</h2>
+<p>بدون برامج أو ملفات ضارة.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>RAYAN GAMING</h2>
+
+<p>
+أفضل منصة ألعاب خفيفة مجانية 🚀
+</p>
+
+</footer>
+
+<!-- TOP BUTTON -->
+
+<button id="topBtn" onclick="scrollTopPage()">
+↑
+</button>
+
+<!-- AUDIO -->
+
+<audio id="clickSound">
+<source src="https://www.soundjay.com/buttons/sounds/button-09.mp3">
+</audio>
+
+<script>
+
+function scrollGames(){
+document.getElementById("games").scrollIntoView({
+behavior:"smooth"
+});
+}
+
+function playSound(){
+document.getElementById("clickSound").play();
+}
+
+window.onscroll = function(){
+if(document.documentElement.scrollTop > 300){
+document.getElementById("topBtn").style.display="block";
+}else{
+document.getElementById("topBtn").style.display="none";
+}
+};
+
+function scrollTopPage(){
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+}
+
+let players = 120000;
+
+setInterval(()=>{
+players += Math.floor(Math.random()*5);
+document.title = "🔥 " + players + " لاعب متصل";
+},2000);
+
+</script>
+
+<!-- LIVE PLAYERS -->
+
+<div id="livePlayers">
+🟢 <span id="playerCount">120000</span> لاعب متصل الآن
+</div>
+
+<style>
+
+#livePlayers{
+position:fixed;
+top:100px;
+right:20px;
+background:#111;
+border:1px solid #00ff88;
+padding:12px 18px;
+border-radius:15px;
+font-weight:bold;
+z-index:999;
+box-shadow:0 0 20px rgba(0,255,136,.3);
+animation:pulsePlayer 2s infinite;
+}
+
+@keyframes pulsePlayer{
+0%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.05);
+}
+100%{
+transform:scale(1);
+}
+}
+
+</style>
+
+<script>
+
+let livePlayers = 120000;
+
+setInterval(()=>{
+
+livePlayers += Math.floor(Math.random()*20);
+
+document.getElementById("playerCount").innerText =
+livePlayers.toLocaleString();
+
+},3000);
+
+</script>
+
+<!-- DARK MODE BUTTON -->
+
+<button id="themeBtn">🌙</button>
+
+<style>
+
+#themeBtn{
+position:fixed;
+bottom:100px;
+left:25px;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#00ff88;
+color:black;
+font-size:24px;
+cursor:pointer;
+z-index:9999;
+font-weight:bold;
+box-shadow:0 0 20px rgba(0,255,136,.4);
+transition:.3s;
+}
+
+#themeBtn:hover{
+transform:scale(1.1);
+}
+
+.light-mode{
+background:#f5f5f5 !important;
+color:#111 !important;
+}
+
+.light-mode header,
+.light-mode footer,
+.light-mode .game-card{
+background:white !important;
+color:#111 !important;
+}
+
+.light-mode .game-info p{
+color:#444 !important;
+}
+
+.light-mode nav a{
+color:#111 !important;
+}
+
+.light-mode .section-title,
+.light-mode .logo h1{
+color:#00cc66 !important;
+}
+
+</style>
+
+<script>
+
+const themeBtn = document.getElementById("themeBtn");
+
+themeBtn.onclick = ()=>{
+
+document.body.classList.toggle("light-mode");
+
+if(document.body.classList.contains("light-mode")){
+themeBtn.innerHTML="☀️";
+localStorage.setItem("theme","light");
+}else{
+themeBtn.innerHTML="🌙";
+localStorage.setItem("theme","dark");
+}
+
+};
+
+if(localStorage.getItem("theme")==="light"){
+
+document.body.classList.add("light-mode");
+
+themeBtn.innerHTML="☀️";
+
+}
+
+</script>
+
+<!-- GAME SEARCH -->
+
+<div id="searchBox">
+    <input
+        type="text"
+        id="gameSearch"
+        placeholder="🔍 ابحث عن لعبة..."
+        onkeyup="searchGames()">
+</div>
+
+<style>
+
+#searchBox{
+width:100%;
+display:flex;
+justify-content:center;
+padding:20px;
+}
+
+#gameSearch{
+width:90%;
+max-width:700px;
+padding:18px 25px;
+border:none;
+outline:none;
+border-radius:20px;
+background:#151515;
+color:white;
+font-size:18px;
+border:2px solid #00ff88;
+box-shadow:0 0 20px rgba(0,255,136,.15);
+transition:.3s;
+}
+
+#gameSearch:focus{
+box-shadow:0 0 25px rgba(0,255,136,.4);
+}
+
+</style>
+
+<script>
+
+function searchGames(){
+
+let input =
+document.getElementById("gameSearch")
+.value.toLowerCase();
+
+let cards =
+document.querySelectorAll(".game-card");
+
+cards.forEach(card=>{
+
+let title =
+card.querySelector("h2")
+.innerText
+.toLowerCase();
+
+if(title.includes(input)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+
+});
+
+}
+
+function searchGames(){
+
+let input =
+document.getElementById("gameSearch")
+.value.toLowerCase();
+
+let cards =
+document.querySelectorAll(".game-card");
+
+cards.forEach(card=>{
+
+let title =
+card.querySelector("h2")
+.innerText
+.toLowerCase();
+
+if(title.includes(input)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+
+});
+
+}
+
+</script>
+
+<script>
+
+document.querySelectorAll(".game-card").forEach(card=>{
+
+card.addEventListener("mouseenter",()=>{
+
+card.style.borderColor="#00ff88";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.borderColor="#333";
+
+});
+
+});
+
+</script>
+
+<div id="stars"></div>
+
+<style>
+
+#stars{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:-1;
+overflow:hidden;
+}
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:#00ff88;
+border-radius:50%;
+animation:starMove linear infinite;
+}
+
+@keyframes starMove{
+
+from{
+transform:translateY(-100vh);
+}
+
+to{
+transform:translateY(100vh);
+}
+
+}
+
+</style>
+
+<script>
+
+for(let i=0;i<80;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"%";
+
+star.style.animationDuration=
+(Math.random()*5+3)+"s";
+
+star.style.opacity=Math.random();
+
+document.getElementById("stars")
+.appendChild(star);
+
+}
+
+</script>
+
+</body>
